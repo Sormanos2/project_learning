@@ -19,7 +19,12 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/post/{id}','PostController@show')->name('post'); 
 
 Route::middleware('auth')->group(function(){
+
+     //Admin
      Route::get('/admin','AdminsController@index')->name('admin.index');
+     //Post
+     Route::get('/admin/posts', 'PostController@index')->name('post.index');
      Route::get('/admin/posts/create', 'PostController@create')->name('post.create');
      Route::post('/admin/posts', 'PostController@store')->name('post.store');
+     
 });

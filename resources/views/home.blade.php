@@ -15,7 +15,7 @@
             <a href="{{ route('post', $post->id) }}" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            {{ $post->created_at }}
+            {{ $post->created_at->diffForHumans() }}
             <a href="#">Start Bootstrap</a>
           </div>
         </div>

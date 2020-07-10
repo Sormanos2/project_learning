@@ -12,17 +12,17 @@
         <hr>
 
         <!-- Date/Time -->
-        <p>{{ $post->created_at }}</p>
+        <p>{{ $post->created_at->diffForHumans() }}</p>
 
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="/{{ $post->post_image }}" alt="">
+        <img class="img-fluid rounded" src="{{ $post->post_image }}" alt="">
 
         <hr>
 
         <!-- Post Content -->
-        <p class="lead">{{ $post->body }}</p>
+        <p class="lead" style="text-indent:50px; text-align:justify;">{{ $post->body }}</p>
 
         <hr>
 

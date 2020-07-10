@@ -7,6 +7,14 @@ use App\Post;
 
 class PostController extends Controller
 {
+
+    public function index(){
+
+        $posts=Post::all();
+
+        return view('admin.posts.post-index',compact('posts'));
+    }
+
     public function show($id){
 
         $post=Post::findorFail($id);
