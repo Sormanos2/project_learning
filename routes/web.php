@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/post/{id}','PostController@show')->name('post'); 
+Route::get('/post/{id}','PostController@show')->name('post');
 
 Route::middleware('auth')->group(function(){
 
@@ -29,4 +29,7 @@ Route::middleware('auth')->group(function(){
      Route::post('/admin/posts/{post}', 'PostController@destroy')->name('post.destroy');
      Route::get('/admin/posts/{post}/edit', 'PostController@edit')->middleware('can:view,post')->name('post.edit');
      Route::patch('/admin/posts/{post}/update', 'PostController@update')->name('post.update');
+
+     Route::get('/admin/users/{user}/profile', 'UserController@show')->name('user.profile.show');
+
 });
