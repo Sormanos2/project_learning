@@ -11,7 +11,11 @@ class PostController extends Controller
 
     public function index(){
 
+
         $posts=Post::all();
+
+    //Pagination
+     //$posts = auth()->user()->posts()->paginate(2);
 
         return view('admin.posts.post-index',compact('posts'));
     }
@@ -73,6 +77,9 @@ class PostController extends Controller
 
         $post->title= $inputs['title'];
         $post->body = $inputs['body'];
+
+
+        $this->authorize('update', $post);
 
         auth()->user()->posts()->save($post);
 

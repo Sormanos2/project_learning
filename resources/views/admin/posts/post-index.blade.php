@@ -55,10 +55,12 @@
                             <td>{{ $post->created_at }}</td>
                             <td>{{ $post->updated_at }}</td>
                             <td>
+                            {{-- @can('view', $post) --}}
                               <form action="{{ route('post.destroy',$post->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Delete</button>
                               </form>
+                            {{-- @endcan --}}
                             </td>
                         </tr>
                     @endforeach
@@ -67,7 +69,8 @@
               </div>
             </div>
           </div>
-
+       {{-- Pagination --}}
+          {{-- {{  $posts->links() }} --}}
          
     @endsection
     @section('scripts')
