@@ -4,13 +4,21 @@
 
         <div class="row">
             <div class="col-md-6">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{ route('user.profile.update', $user) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
-                        <img height="100px" src="{{ asset('storage/images/sormanos.png') }}" alt="">
+                        <img height="100px" src="{{ $user->avatar }}" alt="">
                     </div>
                     <div class="form-group">
-                        <input type="file">
+                        <input type="file" name="avatar" >
+                    </div>
+                    <div class="form-group">
+                        <label for="username">UserName</label>
+                        <input type="text" name="username" class="form-control @error('username') is-invalid @enderror " value="{{ $user->username }}">
+                        @error('username')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -28,6 +36,7 @@
                         <label for="password-confirm">Confirm Password</label>
                         <input type="password" name="password-confirm" id="password-confirm" class="form-control">
                     </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
