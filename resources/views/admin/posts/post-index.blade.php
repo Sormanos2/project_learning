@@ -41,6 +41,7 @@
                       <th>Image</th>
                       <th>Created At</th>
                       <th>Update At</th>
+                      <th>Delete</th>
                     </tr>
                   </tfoot>
                   <tbody>
