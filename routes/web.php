@@ -41,6 +41,11 @@ Route::middleware(['role:admin','auth'])->group(function(){
      Route::get('/admin/users', 'UserController@index')->name('admin.users.index');
 });
 
-Route::middleware(['can:view,user'])->group(function(){
-     Route::get('/admin/users/{user}/profile', 'UserController@show')->name('user.profile.show');
-});
+// Route::middleware(['can:view,user'])->group(function(){
+//      Route::get('/admin/users/{user}/profile', 'UserController@show')->name('user.profile.show');
+// });
+
+ Route::get('/admin/users/{user}/profile', 'UserController@show')->name('user.profile.show');
+ Route::put('/admin/users/{user}/attach', 'UserController@attach')->name('user.role.attach');
+ Route::put('/admin/users/{user}/detach', 'UserController@detach')->name('user.role.detach');
+ 

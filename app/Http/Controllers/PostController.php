@@ -49,6 +49,7 @@ class PostController extends Controller
 
     public function destroy($id, Request $request){
         $post=Post::findorFail($id);
+
         $post->delete();
  
         $request->session()->flash('message','Post was deleted.');
