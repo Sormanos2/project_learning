@@ -48,4 +48,9 @@ Route::middleware(['role:admin','auth'])->group(function(){
  Route::get('/admin/users/{user}/profile', 'UserController@show')->name('user.profile.show');
  Route::put('/admin/users/{user}/attach', 'UserController@attach')->name('user.role.attach');
  Route::put('/admin/users/{user}/detach', 'UserController@detach')->name('user.role.detach');
- 
+
+ Route::get('/admin/roles','RoleController@index')->name('admin.roles');
+ Route::post('/admin/roles/create','RoleController@store')->name('admin.roles.store');
+
+
+ Route::get('/admin/permissions','PermissionController@index')->name('admin.permissions');

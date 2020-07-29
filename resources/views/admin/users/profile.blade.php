@@ -92,7 +92,7 @@
                                                 @if($user->roles->contains($role))
                                                     Disabled
                                                 @endif 
-                                            >Attach</button>
+                                            >Attach</button> 
                                         </form>
                                     </td>
                                     <td>
