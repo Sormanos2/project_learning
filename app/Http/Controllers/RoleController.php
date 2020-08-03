@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use Illuminate\Support\Str;
+use App\Permission;
 
 class RoleController extends Controller
 {
@@ -35,16 +36,21 @@ class RoleController extends Controller
     }
 
     public function edit(Role $role){
-         return view('admin.roles.edit', compact('role'));
+         $permissions= Permission::all();
+         return view('admin.roles.edit', compact('role','permissions'));
     } 
 
     public function update(Role $role){
         $role->name=Str::ucfirst(request('name'));
         $role->slug=Str::of(request('name'))->slug('-');
 
-        $role->save();
+        if ($role->isDirty('name')){
+            session()->flash('role-updated','Updated Role:'. $role->name);
+            $role->save();
+        } else {
+            session()->flash('role-updated','Nothing to Update Role:'. $role->name);
+        }
 
-        session()->flash('role-updated','Updated Role:'. $role->name);
 
         return redirect(route('admin.roles'));
     }
