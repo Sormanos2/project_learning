@@ -51,6 +51,9 @@ Route::middleware(['role:admin','auth'])->group(function(){
 
  Route::get('/admin/roles','RoleController@index')->name('admin.roles');
  Route::post('/admin/roles/create','RoleController@store')->name('admin.roles.store');
+ Route::delete('/admin/roles/{role}/delete','RoleController@destory')->name('roles.destory');
+ Route::get('/admin/roles/{role}/edit','RoleController@edit')->name('admin.roles.edit');
+ Route::put('/admin/roles/{role}/update','RoleController@update')->name('admin.roles.update');
 
 
  Route::get('/admin/permissions','PermissionController@index')->name('admin.permissions');
