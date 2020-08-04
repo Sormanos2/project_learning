@@ -54,6 +54,13 @@ Route::middleware(['role:admin','auth'])->group(function(){
  Route::delete('/admin/roles/{role}/delete','RoleController@destory')->name('roles.destory');
  Route::get('/admin/roles/{role}/edit','RoleController@edit')->name('admin.roles.edit');
  Route::put('/admin/roles/{role}/update','RoleController@update')->name('admin.roles.update');
+ Route::put('/admin/roles/{role}/attach','RoleController@attach')->name('admin.roles.attach');
+ Route::put('/admin/roles/{role}/detach','RoleController@detach')->name('admin.roles.detach');
 
 
  Route::get('/admin/permissions','PermissionController@index')->name('admin.permissions');
+ Route::post('/admin/permissions','PermissionController@store')->name('admin.permission.store');
+ Route::get('/admin/permissions/{permission}/edit','PermissionController@edit')->name('admin.permission.edit');
+ Route::put('/admin/permission/{permission}/update','PermissionController@update')->name('admin.permission.update');
+ Route::delete('/admin/permissions/{permission}/delete','PermissionController@destroy')->name('permission.destroy');
+ 

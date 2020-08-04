@@ -25,7 +25,7 @@ class RoleController extends Controller
         }else{
             Role::Create([
                 'name' => Str::ucfirst(request('name')),
-                'slug' => Str::lower(request('name'))
+                'slug' => Str::of(Str::lower(request('name')))->slug('-')
             ]);
     
             session()->flash('role-inserted','Inserted Role!');
@@ -41,6 +41,7 @@ class RoleController extends Controller
     } 
 
     public function update(Role $role){
+
         $role->name=Str::ucfirst(request('name'));
         $role->slug=Str::of(request('name'))->slug('-');
 
@@ -60,6 +61,16 @@ class RoleController extends Controller
 
         session()->flash('role-deleted','Deleted Role:'.$role->name);
 
+        return back();
+    }
+
+    public function attach(Role $role){
+        $role->permissions()->attach(request('permission'));
+        return back();
+    }
+
+    public function detach(Role $role){
+        $role->permissions()->detach(request('permission'));
         return back();
     }
 
